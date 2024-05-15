@@ -32,7 +32,7 @@ ob_start();
 				<i class="fas fa-cog"></i>
 				<span class="nav-item">Settings</span>
 			</a></li>
-			<li><a href="#" class="logout">
+			<li><a href="login.php" class="logout">
 				<i class="fas fa-sign-out-alt"></i>
 				<span class="nav-item">Log out</span>
 			</a></li>
@@ -109,6 +109,30 @@ ob_start();
 
 <?php
 // insert PHP Code here...
+include("Connect.php");
 
+$sql = "SELECT * FROM Manginsay ORDER BY SurnameHa";
+$result = mysqli_query($con, $sql) or die("error in query");
+$bilang = mysqli_num_rows($result);
+
+while ($rec = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+    $a = $rec['']; // Student NUmber
+    $b = $rec['']; // Full Name
+    $c = $rec['']; // Section
+    $d = $rec['']; // Time In
+    $e = $rec['']; // Time Out
+
+    // Manginsay, nakalimutan ko kung ilang column 'yung gawa mo. If kulang, paki-dagdag 'to.
+
+    echo "
+        <tr>
+            <td>$a</td>
+            <td>$b</td>
+            <td>$c</td>
+            <td>$d</td>
+            <td>$e</td>
+        </tr>
+    "; 
+}
 
 ?>
