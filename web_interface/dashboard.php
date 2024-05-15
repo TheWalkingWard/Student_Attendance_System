@@ -123,6 +123,7 @@ while ($rec = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
     $e = $rec['']; // Time Out
 
     // Manginsay, nakalimutan ko kung ilang column 'yung gawa mo. If kulang, paki-dagdag 'to.
+    // Once this is done, isisingit 'to sa HTML part mismo.
 
     echo "
         <tr>
