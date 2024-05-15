@@ -40,7 +40,7 @@
                         <input type="submit" class="submit" value="Sign up">
                     </div>
                     <div class="signin">
-                        <span>Already have an account? <a href="login.html">Login here</a></span>
+                        <span>Already have an account? <a href="login.php">Login here</a></span>
                     </div>
                 </div>
             </div>
