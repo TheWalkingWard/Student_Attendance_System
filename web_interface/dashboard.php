@@ -46,56 +46,43 @@ ob_start();
 			<table class="table">
 				<thead>
 					<tr>
-					<th>Student No.</th>
-					<th>Name</th>
-					<th>Section</th>
-					<th>Time In</th>
-					<th>Time Out</th>
+                        <th>Student Number</th>
+                        <th>Full Name</th>
+                        <th>course</th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-					<td>-----</td>
-					<td>-----</td>
-					<td>-----</td>
-					<td>-----</td>
-					<td>-----</td>
-					</tr>
-					<tr>
-					<td>-----</td>
-					<td>-----</td>
-					<td>-----</td>
-					<td>-----</td>
-					<td>-----</td>
-					</tr>
-					<tr>
-					<td>-----</td>
-					<td>-----</td>
-					<td>-----</td>
-					<td>-----</td>
-					<td>-----</td>
-					</tr>
-					<tr>
-					<td>-----</td>
-					<td>-----</td>
-					<td>-----</td>
-					<td>-----</td>
-					<td>-----</td>
-					</tr>
-					<tr>
-					<td>-----</td>
-					<td>-----</td>
-					<td>-----</td>
-					<td>-----</td>
-					<td>-----</td>
-					</tr>
-					<tr>
-					<td>-----</td>
-					<td>-----</td>
-					<td>-----</td>
-					<td>-----</td>
-					<td>-----</td>
-					</tr>
+                    <?php
+
+                    include("Connect.php");
+
+                    $sql = "SELECT * FROM student_info ORDER BY surname";
+                    $result = mysqli_query($con, $sql) or die("error in query");
+                    $bilang = mysqli_num_rows($result);
+
+                    while ($rec = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+                        $a = $rec['id_number']; // Student NUmber
+                        $b = $rec['id_prefix']; // Full Name
+                        $c = $rec['surname']; 
+                        $d = $rec['firstname']; 
+                        $e = $rec['middlename']; 
+                        $f = $rec['course']; 
+                        $g = $rec['year'];
+                        $h = $rec['section'];
+
+                        // Manginsay, nakalimutan ko kung ilang column 'yung gawa mo. If kulang, paki-dagdag 'to.
+                        // Once this is done, isisingit 'to sa HTML part mismo.
+
+                        echo "
+                            <tr>
+                                <td>$a$b</td>
+                                <td>$c, $d $e</td>
+                                <td>$f $g$h </td>
+                            </tr>
+                        "; 
+                    }
+                    
+                    ?>
 				</tbody>
 				</table>
 		</div>
@@ -107,33 +94,3 @@ ob_start();
 </body>
 </html>
 
-<?php
-// insert PHP Code here...
-include("Connect.php");
-
-$sql = "SELECT * FROM Manginsay ORDER BY SurnameHa";
-$result = mysqli_query($con, $sql) or die("error in query");
-$bilang = mysqli_num_rows($result);
-
-while ($rec = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-    $a = $rec['']; // Student NUmber
-    $b = $rec['']; // Full Name
-    $c = $rec['']; // Section
-    $d = $rec['']; // Time In
-    $e = $rec['']; // Time Out
-
-    // Manginsay, nakalimutan ko kung ilang column 'yung gawa mo. If kulang, paki-dagdag 'to.
-    // Once this is done, isisingit 'to sa HTML part mismo.
-
-    echo "
-        <tr>
-            <td>$a</td>
-            <td>$b</td>
-            <td>$c</td>
-            <td>$d</td>
-            <td>$e</td>
-        </tr>
-    "; 
-}
-
-?>
