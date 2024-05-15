@@ -1,3 +1,6 @@
+<?php
+ob_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,18 +27,18 @@
 				<div class="input-box">
 					<header>Log in</header>
 					<div class="input-field">
-						<input type="text" class="input" id="username" required>
+						<input type="text" class="input" id="username" name="username" required>
 						<label for="username">Username</label>
 					</div>
 					<div class="input-field">
-						<input type="password" class="input" id="password" required>
+						<input type="password" class="input" id="password" name="password" required>
 						<label for="password">Password</label>
 					</div>
 					<div class="input-field">
-						<input type="submit" class="submit" value="Log in">
+						<input type="submit" class="submit" name="SubmitSignIn" value="Log in">
 					</div>
 					<div class="signin">
-						<span>Don't have an account? <a href="index.html">Signup here</a></span>
+						<span>Don't have an account? <a href="index.php">Signup here</a></span>
 					</div>
 				</div>
 			</div>
@@ -45,3 +48,23 @@
 
 </body>
 </html>     
+
+<?php
+
+if (isset($_POST["SubmitSignIn"])) {
+    $a = $_POST['username'];
+    $b = $_POST['password'];
+
+    include("Connect.php");
+
+    $verify = "SELECT username FROM Manginsay WHERE username = '$a'";
+    $result = mysqli_query($con, $verify);
+    $count = mysqli_num_rows($result);
+
+    if ($count == 0)
+        echo "<h1>$a doesn't exist!</h1>";
+
+    header("Location: dashboard.php");
+}
+
+?>

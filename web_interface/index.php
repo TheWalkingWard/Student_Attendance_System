@@ -1,3 +1,6 @@
+<?php
+ob_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,21 +26,21 @@
                 <div class="input-box">
                     <header>Create account</header>
                     <div class="input-field">
-                        <input type="text" class="input" id="username" required>
-                        <label for="username">Username</label>
+                        <input type="text" class="input" id="username" name="username" required>
+                        <label for="username">Student Number</label>
                     </div>
                     <div class="input-field">
-                        <input type="password" class="input" id="password" required>
+                        <input type="password" class="input" id="password" name="password" required>
                         <label for="password">Password</label>
                     </div>
                     <div class="input-field">
-                        <select class="input" id="role-select">
+                        <select class="input" id="role-select" name="Role">
                             <option value="user">Student</option>
                             <option value="admin">Admin</option>
                         </select>
                     </div>
                     <div class="input-field">
-                        <input type="submit" class="submit" value="Sign up">
+                        <input type="submit" class="submit" name="SubmitSignUp" value="Sign up">
                     </div>
                     <div class="signin">
                         <span>Already have an account? <a href="login.php">Login here</a></span>
@@ -51,3 +54,28 @@
   <script src="script.js"></script>
 </body>
 </html>
+
+<?php 
+
+// Once Sign Up Btn is Pressed
+if (isset($_POST["LogInAdmin"])) {
+    $a = $_POST['username'];
+    $b = $_POST['password'];
+    $c = $_POST['role'];
+
+    include("Connect.php");
+
+    $verify = "SELECT username FROM Manginsay WHERE username = '$a";
+    $result = mysqli_query($con, $verify);
+    $count = mysqli_num_rows($res);
+
+    if ($count == 0) {
+        $insert = "INSERT INTO Manginsay (username, password, role) VALUES ('$a', '$b', '$c')";
+        mysqli_query($con, $insert);
+        echo "Registered Successfully! Please log in now.";
+    } else
+        echo "<h1>$a already exists! Try another one...</h1>";
+
+}
+
+?>
