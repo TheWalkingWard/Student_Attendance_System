@@ -11,6 +11,7 @@ ob_start();
     <link rel="stylesheet" href="login.css" />
     <link rel="stylesheet" href="bootstrap-5.0.2-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Kanit:wght@200;400;800&display=swap" rel="stylesheet" />
+
 </head>
 <body>
 
@@ -28,12 +29,18 @@ ob_start();
 					<header>Log in</header>
 					<div class="input-field">
 						<input type="text" class="input" id="username" name="username" required>
-						<label for="username">Username</label>
+						<label for="username">Student Number</label>
 					</div>
 					<div class="input-field">
 						<input type="password" class="input" id="password" name="password" required>
 						<label for="password">Password</label>
 					</div>
+					<div class="input-field">
+                        <select class="input" id="role-select" name="role">
+                            <option value="user">Student</option>
+                            <option value="admin">Admin</option>
+                        </select>
+                    </div>
 					<div class="input-field">
 						<input type="submit" class="submit" name="SubmitSignIn" value="Log in">
 					</div>
@@ -46,14 +53,17 @@ ob_start();
 	</div> 
 </div>
 
+<script src="script.js"></script>
+
 </body>
-</html>     
+</html>
 
 <?php
 
 if (isset($_POST["SubmitSignIn"])) {
     $a = $_POST['username'];
     $b = $_POST['password'];
+	$c = $_POST['role'];
 
     include("Connect.php");
 
@@ -64,7 +74,10 @@ if (isset($_POST["SubmitSignIn"])) {
     if ($count == 0)
         echo "<h1>$a doesn't exist!</h1>";
 
-    header("Location: dashboard.php");
+	if (($c = $_POST['role'] == "user"))
+    	header("Location: dashboard-Student.php");
+	else if (($c = $_POST['role'] == "user"))
+		header("Location: dashboard.php");
 }
 
 ?>
