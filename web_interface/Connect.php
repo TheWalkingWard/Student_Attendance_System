@@ -1,9 +1,13 @@
 <?php
 
-$con = mysqli_connect("localhost", "earist_sas", "earist_1945", "earist_student_data") or die("No Connection :(");
+$con = mysqli_connect("", "", "", "") or die("No Connection :(");
 
+if (isset($_POST["LogInStud"])) {
+    header("Location: index.html");
+}
 
-
-
+if (isset($_POST["LogInAdmin"])) {
+    header("Location: index (Admin).html");
+}
 
 ?>
