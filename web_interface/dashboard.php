@@ -49,6 +49,8 @@ ob_start();
                         <th>Student Number</th>
                         <th>Full Name</th>
                         <th>course</th>
+						<th>Time In</th>
+						<th>Time Out</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -69,6 +71,8 @@ ob_start();
                         $f = $rec['course']; 
                         $g = $rec['year'];
                         $h = $rec['section'];
+						//$i = $rec['timein'];
+						//$j = $rec['timeout'];
 
                         // Manginsay, nakalimutan ko kung ilang column 'yung gawa mo. If kulang, paki-dagdag 'to.
                         // Once this is done, isisingit 'to sa HTML part mismo.
@@ -78,6 +82,8 @@ ob_start();
                                 <td>$a$b</td>
                                 <td>$c, $d $e</td>
                                 <td>$f $g$h </td>
+								<td></td>
+								<td></td>
                             </tr>
                         "; 
                     }
