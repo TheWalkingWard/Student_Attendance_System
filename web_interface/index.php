@@ -34,7 +34,7 @@ ob_start();
                         <label for="password">Password</label>
                     </div>
                     <div class="input-field">
-                        <select class="input" id="role-select" name="Role">
+                        <select class="input" id="role-select" name="role">
                             <option value="user">Student</option>
                             <option value="admin">Admin</option>
                         </select>
@@ -58,7 +58,7 @@ ob_start();
 <?php 
 
 // Once Sign Up Btn is Pressed
-if (isset($_POST["LogInAdmin"])) {
+if (isset($_POST["SubmitSignUp"])) {
     $a = $_POST['username'];
     $b = $_POST['password'];
     $c = $_POST['role'];
