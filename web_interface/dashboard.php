@@ -51,7 +51,6 @@ ob_start();
                         <th>course</th>
 						<th>Time In</th>
 						<th>Time Out</th>
-						<th>Location</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -84,7 +83,6 @@ ob_start();
                                 <td>$a$b</td>
                                 <td>$c, $d $e</td>
                                 <td>$f $g$h </td>
-								<td></td>
 								<td></td>
 								<td></td>
                             </tr>
