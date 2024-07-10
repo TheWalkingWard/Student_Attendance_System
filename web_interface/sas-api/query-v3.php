@@ -66,6 +66,29 @@ if (isset($_GET['table'])) {
         // Close the statement
         $stmt->close();
     }
+    // Check for combination: table, course, date
+    elseif (isset($_GET['course']) && isset($_GET['date'])) {
+        $course = $_GET['course'];
+        $date = $_GET['date'];
+
+        // Use prepared statements to prevent SQL injection
+        $stmt = $conn->prepare("SELECT `timestamp_unix`, `time-in`, `time-out` FROM `$table` WHERE `course-id` = ? AND `timestamp_std` = ?");
+        $stmt->bind_param("ss", $course, $date);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        // Check if any rows were returned
+        if ($result->num_rows > 0) {
+            // Fetch the row and store it in response
+            $row = $result->fetch_assoc();
+            $response = $row;
+        } else {
+            $response['message'] = "No results found.";
+        }
+
+        // Close the statement
+        $stmt->close();
+    }
 	// Check for combination: table, day
     elseif (isset($_GET['day'])) {
         $day = $_GET['day'];
