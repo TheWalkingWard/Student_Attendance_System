@@ -97,6 +97,46 @@ ob_start();
 </section>
 
 </div>
+
+<form action="process_form.php" method="post">
+	<h2>Create Table</h2>
+	<label for="table_name">Table Name:</label>
+	<input type="text" id="table_name" name="table_name" required><br><br>
+
+	<h2>Insert Student Info</h2>
+	<label for="id_number">ID Number:</label>
+	<input type="text" id="id_number" name="id_number" required><br><br>
+
+	<label for="id_prefix">ID Prefix:</label>
+	<input type="text" id="id_prefix" name="id_prefix" required><br><br>
+
+	<label for="surname">Surname:</label>
+	<input type="text" id="surname" name="surname" required><br><br>
+
+	<label for="firstname">First Name:</label>
+	<input type="text" id="firstname" name="firstname" required><br><br>
+
+	<label for="middlename">Middle Name:</label>
+	<input type="text" id="middlename" name="middlename" required><br><br>
+
+	<label for="course">Course:</label>
+	<input type="text" id="course" name="course" required><br><br>
+
+	<label for="year">Year:</label>
+	<input type="text" id="year" name="year" required><br><br>
+
+	<label for="section">Section:</label>
+	<input type="text" id="section" name="section" required><br><br>
+
+	<input type="submit" value="Submit">
+</form>
+
 <script src="script.js"></script>
 </body>
 </html>
+
+<?php 
+include("Connect.php");
+
+
+?>
